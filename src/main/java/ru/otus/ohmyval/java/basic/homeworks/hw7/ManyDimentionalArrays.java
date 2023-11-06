@@ -7,6 +7,8 @@ public class ManyDimentionalArrays {
         System.out.println();
         printSquare(6);
         clearDiagonalArr(new int[][]{{1,3,3,5}, {1,3,2,4}, {1,1,1,1}, {5,1,4,7}});
+        System.out.println(findMax(new int[][]{{1,3,-5,6},{-2,-4,6,8,9,5}}));
+        System.out.println();
 
     }
 
@@ -43,6 +45,16 @@ public class ManyDimentionalArrays {
         System.out.println();
     }
 
-
+    public static int findMax(int[][] array) {
+        int max = array[0][0];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] > max) {
+                    max = array[i][j];
+                }
+            }
+        }
+        return max;
+    }
 
 }
