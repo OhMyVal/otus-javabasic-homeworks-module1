@@ -9,6 +9,8 @@ public class ArraysApp {
         fillArr(6, new int[] {3,6,7,8,2,5,9,23,78,93});
         increaseArr(2, new int[] {6,4,7,2,8,9,1,0,5,44,66});
         compareSum(new int[] {1,2,3,4,5,6,7,8,9});
+      // задания под *
+        sumOfArrays(new int[] {1,2,3,4,5,6,7}, new int[] {2,6}, new int[] {2,4,5,6,7});
     }
 
     public static void printString(int a, String arg) {
@@ -64,7 +66,29 @@ public class ArraysApp {
             } else {
             System.out.println("Сумма элементов правой половины массива больше");
             }
-
+        System.out.println();
+    }
+    public static void sumOfArrays(int[] arr1, int[] arr2, int[] arr3) {
+        int maxLength = arr1.length;
+        if (arr2.length > arr1.length) {
+            maxLength = arr2.length;
+            }
+        if (arr3.length > maxLength) {
+            maxLength = arr3.length;
+            }
+        int[] arrSum = new int[maxLength];
+        System.arraycopy(arr1,0, arrSum, 0, arr1.length);
+        for (int i = 0; i < arr2.length; i++) {
+            arrSum[i] += arr2[i];
+            }
+        for (int i = 0; i < arr3.length; i++) {
+            arrSum[i] += arr3[i];
+            }
+        System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr2));
+        System.out.println(Arrays.toString(arr3));
+        System.out.println(Arrays.toString(arrSum));
+        System.out.println();
     }
 }
 
