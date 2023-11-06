@@ -12,6 +12,9 @@ public class ArraysApp {
       // задания под *
         sumOfArrays(new int[] {1,2,3,4,5,6,7}, new int[] {2,6}, new int[] {2,4,5,6,7});
         System.out.println(pointInArray(new int[] {1,2,3,4,7,8,9}));
+        System.out.println();
+        System.out.println(incrementArray(new int[] {1,2,3,4,5,4,7,8,9}));
+        System.out.println();
     }
 
     public static void printString(int a, String arg) {
@@ -109,6 +112,14 @@ public class ArraysApp {
             }
         }
         return false;
+    }
+    public static boolean incrementArray(int[] arr){
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i+1] < arr[i]){
+                return false;
+                }
+            }
+        return true;
     }
 }
 
