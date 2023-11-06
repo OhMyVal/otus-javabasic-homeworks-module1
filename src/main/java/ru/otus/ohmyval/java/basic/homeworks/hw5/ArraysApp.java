@@ -15,6 +15,7 @@ public class ArraysApp {
         System.out.println();
         System.out.println(incrementArray(new int[] {1,2,3,4,5,4,7,8,9}));
         System.out.println();
+        turnOverArr(new int[] {1,2,3,4,5,6,7,8});
     }
 
     public static void printString(int a, String arg) {
@@ -120,6 +121,18 @@ public class ArraysApp {
                 }
             }
         return true;
+    }
+
+    public static void turnOverArr(int[] arr){
+        System.out.println(Arrays.toString(arr));
+        int turnOver = 0;
+        for (int i = 0; i < arr.length/2; i++) {
+            turnOver = arr[i];
+            arr[i] = arr[arr.length-1-i];
+            arr[arr.length-1-i] = turnOver;
+            }
+        System.out.println(Arrays.toString(arr));
+        System.out.println();
     }
 }
 
