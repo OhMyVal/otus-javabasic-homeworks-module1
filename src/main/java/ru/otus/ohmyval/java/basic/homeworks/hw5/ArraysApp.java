@@ -11,6 +11,7 @@ public class ArraysApp {
         compareSum(new int[] {1,2,3,4,5,6,7,8,9});
       // задания под *
         sumOfArrays(new int[] {1,2,3,4,5,6,7}, new int[] {2,6}, new int[] {2,4,5,6,7});
+        System.out.println(pointInArray(new int[] {1,2,3,4,7,8,9}));
     }
 
     public static void printString(int a, String arg) {
@@ -89,6 +90,25 @@ public class ArraysApp {
         System.out.println(Arrays.toString(arr3));
         System.out.println(Arrays.toString(arrSum));
         System.out.println();
+    }
+
+    public static boolean pointInArray(int[] arr) {
+        int sumLeft = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            sumLeft += arr[i];
+        }
+        int sumRight = arr[arr.length - 1];
+        if (sumLeft == sumRight) {
+            return true;
+        }
+        for (int i = arr.length - 2; i > 0; i--) {
+            sumLeft -= arr[i];
+            sumRight += arr[i];
+            if (sumLeft == sumRight) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
