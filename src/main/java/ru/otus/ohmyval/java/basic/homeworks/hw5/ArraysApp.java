@@ -125,7 +125,7 @@ public class ArraysApp {
 
     public static void turnOverArr(int[] arr){
         System.out.println(Arrays.toString(arr));
-        int turnOver = 0;
+        int turnOver;
         for (int i = 0; i < arr.length/2; i++) {
             turnOver = arr[i];
             arr[i] = arr[arr.length-1-i];
