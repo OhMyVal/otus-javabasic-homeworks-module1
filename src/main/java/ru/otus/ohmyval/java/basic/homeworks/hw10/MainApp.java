@@ -21,5 +21,36 @@ public class MainApp {
                 System.out.println();
             }
         }
+        Box box = new Box(34, 25, 14, "green", false, false);
+        Box box2 = new Box (67, 42,12, "red", true, false);
+        box.info();
+        box2.info();
+
+        System.out.println("Размеры: " + box.getLength() + " * "+ box.getWidth() + " * "+ box.getHeight());
+        System.out.println("Размеры: " + box2.getLength() + " * "+ box2.getWidth() + " * "+ box2.getHeight());
+        System.out.println();
+
+        box.setColor("yellow");
+        box.info();
+
+        box2.setColor("blue");
+        box2.info();
+
+        System.out.println("Цвет: " + box.getColor());
+        System.out.println("Цвет: " + box2.getColor());
+        System.out.println();
+
+        box.putIn("Растение");
+        box.info();
+
+        box2.putOut("Яблоко");
+        box2.info();
+
+        box.setOpened(true);
+        box.info();
+
+        box2.setOpened(false);
+        box2.info();
+
     }
 }

@@ -43,8 +43,8 @@ public class Box {
     }
 
     public void info(){
-        System.out.println("Размеры: " + length + " * "+ width + " * "+ height + " * ");
-        System.out.println(color);
+        System.out.println("Размеры в см: " + length + " * "+ width + " * "+ height);
+        System.out.println("Цвет: " + color);
         if(opened){
         System.out.println("Коробка открыта");
         } else {
@@ -55,6 +55,7 @@ public class Box {
         } else {
             System.out.println("Коробка заполнена");
         }
+        System.out.println();
     }
 
     public void putIn(String item){
