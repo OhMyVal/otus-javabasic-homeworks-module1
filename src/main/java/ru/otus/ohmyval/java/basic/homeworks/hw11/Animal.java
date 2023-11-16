@@ -26,31 +26,32 @@ public class Animal {
         return swimEnduranceDrain;
     }
     public void info(){
-        System.out.println(getClass() + " " + name + ", выносливость " + endurance);
+        System.out.println(name + ", выносливость " + endurance);
         if (endurance > 0) {
             System.out.println("У животного есть силы");
         }else {
             System.out.println("Животное устало");
         }
+        System.out.println();
     }
     public int run(int distance){
         if(endurance < runEnduranceDrain * distance){
-            System.out.println(getClass() + " " + name + " не может пробежать эту дистанцию - не хватает сил");
-            return (-1);
+            System.out.println(name + " не может пробежать эту дистанцию - не хватает сил");
+            return -1;
             }
         int time = distance / velocityOfRunning;
         endurance -= runEnduranceDrain * distance;
-        System.out.println("У " + getClass() + " " + name + " осталось " + endurance + " единиц выносливости");
+        System.out.println("У животного " + name + " осталось " + endurance + " единиц выносливости");
         return time;
     }
     public int swim(int distance) {
         if (endurance < swimEnduranceDrain * distance) {
-            System.out.println(getClass() + " " + name + " не может проплыть эту дистанцию - не хватает сил");
-            return (-1);
+            System.out.println(name + " не может проплыть эту дистанцию - не хватает сил");
+            return -1;
         }
         int time = distance / velocityOfSwimming;
         endurance -= swimEnduranceDrain * distance;
-        System.out.println("У " + getClass() + " " + name + " осталось " + endurance + " единиц выносливости");
+        System.out.println("У животного " + name + " осталось " + endurance + " единиц выносливости");
         return time;
     }
 
