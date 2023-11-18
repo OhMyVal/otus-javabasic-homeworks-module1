@@ -21,7 +21,7 @@ public class Plate {
             System.out.println("В тарелку нельзя добавить еду - она наполнена");
             return;
         }
-//        for (int i = foodQuantity; i < maxCapacity; i++){
+//        for (int i = foodQuantity; i < maxCapacity; i++){    можно наполнять циклом, если до нужного значения
 //            foodQuantity ++;
 //        }
         foodQuantity = maxCapacity;
