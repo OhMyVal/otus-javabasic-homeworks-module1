@@ -9,6 +9,9 @@ public class Plate {
     public int getFoodQuantity(){
         return foodQuantity;
     }
+    public void setFoodQuantity(Cat cat){
+        this.foodQuantity -= cat.getAppetite();
+    }
     public Plate(int maxCapacity, int foodQuantity){
         this.maxCapacity = maxCapacity;
         this.foodQuantity = foodQuantity;
@@ -18,7 +21,7 @@ public class Plate {
             System.out.println("В тарелку нельзя добавить еду - она наполнена");
             return;
         }
-//        for (int i = foodQuantity + 1; i <= maxCapacity; i++){
+//        for (int i = foodQuantity; i < maxCapacity; i++){
 //            foodQuantity ++;
 //        }
         foodQuantity = maxCapacity;

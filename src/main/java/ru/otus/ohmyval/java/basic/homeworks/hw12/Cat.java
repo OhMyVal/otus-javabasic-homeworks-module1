@@ -20,9 +20,26 @@ public class Cat {
     }
     public void info(){
         if(satiety) {
-            System.out.println("Кот " + name + "сытый");
+            System.out.println("Кот " + name + " сытый");
             return;
         }
-        System.out.println("Кот " + name + "голодный");
+        System.out.println("Кот " + name + " голодный");
+    }
+    public void eat(Plate plate){
+        if (satiety) {
+            System.out.println("Кот " + name + " сытый, есть не хочет");
+            return;
+        }
+        if (plate.getFoodQuantity() == 0){
+            System.out.println("Еды нет от слова совсем, кормить котов нечем");
+            return;
+        }
+        if (!plate.decreaseFood(this)){
+            System.out.println("Кот " + name + " не поел - ему не хватило еды");
+            return;
+        }
+        System.out.println("Кот " + name + " поел");
+        satiety = true;
+        plate.setFoodQuantity(this);
     }
 }
