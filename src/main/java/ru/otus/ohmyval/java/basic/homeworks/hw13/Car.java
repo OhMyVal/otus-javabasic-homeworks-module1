@@ -1,6 +1,6 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
-public class Car {
+public class Car implements Transport {
     private int fuel;
 //    private CountryVariety countryVariety;
     private Human passenger;
@@ -20,6 +20,9 @@ public class Car {
     public void setPassenger(Human passenger){
         this.passenger = passenger;
     }
+    public Car(int fuel){
+        this.fuel = fuel;
+    }
 //    private String passenger;
 //    public String getPassenger(){
 //        return passenger;
@@ -27,21 +30,23 @@ public class Car {
 //    public Car(Human human){
 //        this.passenger = human.getName();
 //    }
+    @Override
     public boolean move(CountryVariety countryVariety, int distance){
-        if (countryVariety != CountryVariety.PLAIN){
-            System.out.println("Машина не может ехать по этой местности");
-            return false;
-        }
+        int drainRate = 10;
         if (passenger == null){
             System.out.println("Машина не может ехать без пассажира");
             return false;
         }
-        if (fuel < distance/10){
-            System.out.println("Машина не может ехать - не хватает бензина");
+        if (countryVariety != CountryVariety.PLAIN){
+            System.out.println("Машина не может ехать по этой местности");
             return false;
         }
-        fuel -= distance/10;
-        System.out.println("Человек проехал на машине " + distance + " км");
+        if (fuel < distance/drainRate){
+            System.out.println("Машина не может проехать - не хватает бензина");
+            return false;
+        }
+        fuel -= distance/drainRate;
+        System.out.println("Человек" + passenger + " проехал на машине " + distance + " км");
         return true;
     }
 }

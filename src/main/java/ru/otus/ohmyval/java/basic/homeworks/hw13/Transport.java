@@ -1,0 +1,5 @@
+package ru.otus.ohmyval.java.basic.homeworks.hw13;
+
+public interface Transport {
+    boolean move(CountryVariety countryVariety, int distance);
+}
