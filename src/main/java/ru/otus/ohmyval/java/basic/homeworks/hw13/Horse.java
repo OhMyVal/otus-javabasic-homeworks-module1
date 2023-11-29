@@ -2,24 +2,29 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
 public class Horse implements Transport{
     private int power;
-    private Human passenger;
+    private Human driver;
+    private final int drainRate = 2;
     public int getPower() {
         return power;
     }
-    public Human getPassenger(){
-        return passenger;
+    @Override
+    public Human getDriver(){
+        return driver;
     }
-    public void setPassenger(Human passenger){
-        this.passenger = passenger;
+    @Override
+    public void setDriver(Human driver){
+        this.driver = driver;
+    }
+    public int getDrainRate(){
+        return drainRate;
     }
     public Horse(int power){
         this.power = power;
     }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){
-        int drainRate = 2;
-        if (passenger == null){
-            System.out.println("Лошадь не может идти без пассажира");
+        if (driver == null){
+            System.out.println("Лошадь не может идти без наездника");
             return false;
         }
         if (countryVariety == CountryVariety.SWAMP){
@@ -31,7 +36,7 @@ public class Horse implements Transport{
             return false;
         }
         power -= distance/drainRate;
-        System.out.println("Человек" + passenger + "проехал на лошади " + distance + " км");
+        System.out.println("Человек" + driver + "проехал на лошади " + distance + " км");
         return true;
     }
 }

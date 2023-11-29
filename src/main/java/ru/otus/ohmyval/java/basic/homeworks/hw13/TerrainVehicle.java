@@ -2,24 +2,29 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
 public class TerrainVehicle implements Transport {
     private int fuel;
-    private Human passenger;
+    private Human driver;
     public int getFuel() {
         return fuel;
     }
-    public Human getPassenger(){
-        return passenger;
+    @Override
+    public Human getDriver(){
+        return driver;
     }
-    public void setPassenger(Human passenger){
-        this.passenger = passenger;
+    @Override
+    public void setDriver(Human driver){
+        this.driver = driver;
+    }
+    private final int drainRate = 5;
+    public int getDrainRate(){
+        return drainRate;
     }
     public TerrainVehicle(int fuel){
         this.fuel = fuel;
     }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){
-        int drainRate = 5;
-        if (passenger == null){
-            System.out.println("Вездеход не может ехать без пассажира");
+        if (driver == null){
+            System.out.println("Вездеход не может ехать без водителя");
             return false;
         }
         if (fuel < distance/drainRate){
@@ -27,7 +32,7 @@ public class TerrainVehicle implements Transport {
             return false;
         }
         fuel -= distance/drainRate;
-        System.out.println("Человек" + passenger + "проехал на вездеходе " + distance + " км");
+        System.out.println("Человек" + driver + "проехал на вездеходе " + distance + " км");
         return true;
     }
 }

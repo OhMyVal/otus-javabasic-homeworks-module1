@@ -1,23 +1,25 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
 public class Bicycle implements Transport {
-    private Human passenger;
+    private Human driver;
 //    public int getFuel() {
 //        return fuel;
 //    }
-    public Human getPassenger(){
-        return passenger;
+    @Override
+    public Human getDriver(){
+        return driver;
     }
-    public void setPassenger(Human passenger){
-        this.passenger = passenger;
+    @Override
+    public void setDriver(Human driver){
+        this.driver = driver;
     }
 //    public Car(int fuel){
 //        this.fuel = fuel;
 //    }
     @Override
      public boolean move(CountryVariety countryVariety, int distance){
-         if (passenger == null){
-             System.out.println("Велосипед не может ехать без пассажира");
+         if (driver == null){
+             System.out.println("Велосипед не может ехать без водителя");
              return false;
          }
         if (countryVariety == CountryVariety.SWAMP){
@@ -29,7 +31,7 @@ public class Bicycle implements Transport {
 //            return false;
 //        }
 //        fuel -= distance/10;
-        System.out.println("Человек" + passenger + "проехал на велосипеде " + distance + " км");
+        System.out.println("Человек" + driver + "проехал на велосипеде " + distance + " км");
         return true;
     }
 }

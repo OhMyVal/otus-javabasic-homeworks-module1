@@ -3,7 +3,8 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 public class Car implements Transport {
     private int fuel;
 //    private CountryVariety countryVariety;
-    private Human passenger;
+    private Human driver;
+    private final int drainRate = 10;
 //    public CountryVariety getCountryVariety(){
 //        return countryVariety;
 //    }
@@ -14,11 +15,16 @@ public class Car implements Transport {
     public int getFuel() {
         return fuel;
     }
-    public Human getPassenger(){
-        return passenger;
+    @Override
+    public Human getDriver(){
+        return driver;
     }
-    public void setPassenger(Human passenger){
-        this.passenger = passenger;
+    @Override
+    public void setDriver(Human driver){
+        this.driver = driver;
+    }
+    public int getDrainRate(){
+        return drainRate;
     }
     public Car(int fuel){
         this.fuel = fuel;
@@ -32,9 +38,8 @@ public class Car implements Transport {
 //    }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){
-        int drainRate = 10;
-        if (passenger == null){
-            System.out.println("Машина не может ехать без пассажира");
+        if (driver == null){
+            System.out.println("Машина не может ехать без водителя");
             return false;
         }
         if (countryVariety != CountryVariety.PLAIN){
@@ -46,7 +51,7 @@ public class Car implements Transport {
             return false;
         }
         fuel -= distance/drainRate;
-        System.out.println("Человек" + passenger + " проехал на машине " + distance + " км");
+        System.out.println("Человек" + driver + " проехал на машине " + distance + " км");
         return true;
     }
 }
