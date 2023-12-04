@@ -27,12 +27,12 @@ public class TerrainVehicle implements Transport {
             System.out.println("Вездеход не может ехать без водителя");
             return false;
         }
-        if (fuel < distance/drainRate){
+        if (fuel < distance * drainRate){
             System.out.println("Вездеход не может проехать - не хватает бензина");
             return false;
         }
-        fuel -= distance/drainRate;
-        System.out.println("Человек" + driver + "проехал на вездеходе " + distance + " км");
+        fuel -= distance * drainRate;
+        System.out.println("Человек " + driver.getName() + " проехал на вездеходе " + distance + " км");
         return true;
     }
 }

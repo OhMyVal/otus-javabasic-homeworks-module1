@@ -4,7 +4,7 @@ public class Car implements Transport {
     private int fuel;
 //    private CountryVariety countryVariety;
     private Human driver;
-    private final int drainRate = 10;
+    private final int drainRate = 2;
 //    public CountryVariety getCountryVariety(){
 //        return countryVariety;
 //    }
@@ -46,12 +46,12 @@ public class Car implements Transport {
             System.out.println("Машина не может ехать по этой местности");
             return false;
         }
-        if (fuel < distance/drainRate){
+        if (fuel < distance * drainRate){
             System.out.println("Машина не может проехать - не хватает бензина");
             return false;
         }
-        fuel -= distance/drainRate;
-        System.out.println("Человек" + driver + " проехал на машине " + distance + " км");
+        fuel -= distance * drainRate;
+        System.out.println("Человек " + driver.getName() + " проехал на машине " + distance + " км");
         return true;
     }
 }

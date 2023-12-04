@@ -2,36 +2,33 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
 public class Bicycle implements Transport {
     private Human driver;
-//    public int getFuel() {
-//        return fuel;
-//    }
+
     @Override
-    public Human getDriver(){
+    public Human getDriver() {
         return driver;
     }
+
     @Override
-    public void setDriver(Human driver){
+    public void setDriver(Human driver) {
         this.driver = driver;
     }
-//    public Car(int fuel){
-//        this.fuel = fuel;
-//    }
+
     @Override
-     public boolean move(CountryVariety countryVariety, int distance){
-         if (driver == null){
-             System.out.println("Велосипед не может ехать без водителя");
-             return false;
-         }
-        if (countryVariety == CountryVariety.SWAMP){
+    public boolean move(CountryVariety countryVariety, int distance) {
+        if (driver == null) {
+            System.out.println("Велосипед не может ехать без водителя");
+            return false;
+        }
+        if (countryVariety == CountryVariety.SWAMP) {
             System.out.println("Велосипед не может ехать по болоту");
             return false;
         }
-//        if (fuel < distance/10){
-//            System.out.println("Велосипед не может ехать - не хватает сил у человека");
-//            return false;
-//        }
-//        fuel -= distance/10;
-        System.out.println("Человек" + driver + "проехал на велосипеде " + distance + " км");
+        if (driver.getEnergy() < distance * driver.getDrainRate()) {
+            System.out.println("Человек " + driver.getName() + " не может проехать расстояние на велосипеде - не хватает сил");
+            return false;
+        }
+        driver.setEnergy(distance * driver.getDrainRate());
+        System.out.println("Человек " + driver.getName() + " проехал на велосипеде " + distance + " км");
         return true;
     }
 }
