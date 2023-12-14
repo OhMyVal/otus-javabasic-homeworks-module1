@@ -12,6 +12,14 @@ public class Bicycle implements Transport {
     public void setDriver(Human driver) {
         this.driver = driver;
     }
+    @Override
+    public int getFuel() {
+        return 0;
+    }
+    @Override
+    public String toString(){
+        return getClass().getSimpleName();
+    }
 
     @Override
     public boolean move(CountryVariety countryVariety, int distance) {
@@ -27,7 +35,7 @@ public class Bicycle implements Transport {
             System.out.println("Человек " + driver.getName() + " не может проехать расстояние на велосипеде - не хватает сил");
             return false;
         }
-        driver.setEnergy(distance * driver.getDrainRate());
+        driver.setEnergy(driver.getEnergy() - distance * driver.getDrainRate());
         System.out.println("Человек " + driver.getName() + " проехал на велосипеде " + distance + " км");
         return true;
     }

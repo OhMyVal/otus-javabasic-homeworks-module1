@@ -18,8 +18,16 @@ public class Horse implements Transport{
     public int getDrainRate(){
         return drainRate;
     }
+    @Override
+    public int getFuel() {
+        return 0;
+    }
     public Horse(int power){
         this.power = power;
+    }
+    @Override
+    public String toString(){
+        return getClass().getSimpleName();
     }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){

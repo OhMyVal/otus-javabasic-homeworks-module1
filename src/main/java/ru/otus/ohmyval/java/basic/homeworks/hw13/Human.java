@@ -26,7 +26,7 @@ public class Human {
            }
     public boolean getInTransport(Transport transport){
         if (transport.getDriver() != null && transport.getDriver() != this){
-            System.out.println("В транспорте " + transport + " сидит кто-то другой");
+            System.out.println("Человек " + name + " не может сесть в " + transport + " - там сидит кто-то другой");
             return false;
         }
         if (currentTransport == transport){  // if(transport.getDriver() = this){ либо можно по водителю проверить
@@ -35,7 +35,7 @@ public class Human {
         }
         if (currentTransport != null){
             currentTransport.setDriver(null);
-            System.out.println("Человек " + name + " покинул" + currentTransport);
+            System.out.println("Человек " + name + " покинул " + currentTransport);
             transport.setDriver(this);
             currentTransport = transport;
             System.out.println("Человек " + name + " сел в " + transport);
@@ -48,9 +48,9 @@ public class Human {
     }
     public boolean leaveTransport(Transport transport){
         if (currentTransport != null && currentTransport == transport){ //if(transport.getDriver() = this){ думаю, что 2 условия можно заменить одним этим
-            currentTransport.setDriver(null);
+            currentTransport = null;
             transport.setDriver(null); //не уверена, что нужна эта строчка: currentTransport и transport ссылаются на один объект. и в предыдущей строке я обнулила водителя.
-            System.out.println("Человек " + name + " покинул" + transport);
+            System.out.println("Человек " + name + " покинул " + transport);
             return true;
         }
         System.out.println("Невозможно выполнить действие"); // решила не расписывать сценарии, что человек и так без транспорта или сидит в другом транспорте.

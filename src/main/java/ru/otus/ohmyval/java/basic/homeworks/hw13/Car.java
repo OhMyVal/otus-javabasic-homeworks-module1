@@ -2,16 +2,9 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
 public class Car implements Transport {
     private int fuel;
-//    private CountryVariety countryVariety;
     private Human driver;
     private final int drainRate = 2;
-//    public CountryVariety getCountryVariety(){
-//        return countryVariety;
-//    }
-//    public void setCountryVariety(CountryVariety countryVariety) {
-//        this.countryVariety = countryVariety;
-//    }
-
+    @Override
     public int getFuel() {
         return fuel;
     }
@@ -29,13 +22,10 @@ public class Car implements Transport {
     public Car(int fuel){
         this.fuel = fuel;
     }
-//    private String passenger;
-//    public String getPassenger(){
-//        return passenger;
-//    }
-//    public Car(Human human){
-//        this.passenger = human.getName();
-//    }
+    @Override
+    public String toString(){
+        return getClass().getSimpleName();
+    }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){
         if (driver == null){

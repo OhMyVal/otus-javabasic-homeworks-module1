@@ -3,6 +3,7 @@ package ru.otus.ohmyval.java.basic.homeworks.hw13;
 public class TerrainVehicle implements Transport {
     private int fuel;
     private Human driver;
+    @Override
     public int getFuel() {
         return fuel;
     }
@@ -20,6 +21,10 @@ public class TerrainVehicle implements Transport {
     }
     public TerrainVehicle(int fuel){
         this.fuel = fuel;
+    }
+    @Override
+    public String toString(){
+        return getClass().getSimpleName();
     }
     @Override
     public boolean move(CountryVariety countryVariety, int distance){
