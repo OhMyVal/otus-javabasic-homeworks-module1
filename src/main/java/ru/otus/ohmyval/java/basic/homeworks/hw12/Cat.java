@@ -48,12 +48,4 @@ public class Cat {
         System.out.println("Кот " + name + " не поел - ему не хватило еды");
     }
 }
-//        plate.decreaseFood(this);
-        //        if (!plate.decreaseFood(this)){
-//            System.out.println("Кот " + name + " не поел - ему не хватило еды");
-//            return;
-//        }
-//        System.out.println("Кот " + name + " поел");
-//        satiety = true;
-////        plate.decreaseFood(this);
 
