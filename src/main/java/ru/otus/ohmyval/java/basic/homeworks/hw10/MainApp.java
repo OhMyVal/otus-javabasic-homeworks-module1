@@ -21,8 +21,8 @@ public class MainApp {
                 System.out.println();
             }
         }
-        Box box = new Box(34, 25, 14, "green", false, false, "Растение");
-        Box box2 = new Box (67, 42,12, "red", true, false, "Яблоко");
+        Box box = new Box(34, 25, 14, "green", false, true);
+        Box box2 = new Box (67, 42,12, "red", true, true);
         box.info();
         box2.info();
 
@@ -40,13 +40,19 @@ public class MainApp {
         System.out.println("Цвет: " + box2.getColor());
         System.out.println();
 
-        box.putIn();
+        box.putIn("Растение");
         box.info();
 
-        box2.putOut();
+        box2.putIn("Яблоко");
+        box2.info();
+
+        box2.putOut("Яблоко");
         box2.info();
 
         box.setOpened(true);
+        box.info();
+
+        box.putIn("Растение");
         box.info();
 
         box2.setOpened(false);
