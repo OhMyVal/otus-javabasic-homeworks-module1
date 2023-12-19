@@ -7,9 +7,9 @@ public class MainApp {
                 new Cat("Рыжик", 6, false),
                 new Cat("Пиратка", 15, false),
                 new Cat("Кузя", 10, false),
-                new Cat("Барсик", 7, false),
+                new Cat("Барсик", 5, false),
         };
-        Plate plate = new Plate(26, 26);
+        Plate plate = new Plate(47, 47);
         plate.addFood();
         for (int i = 0; i < cats.length; i++) {
             cats[i].info();

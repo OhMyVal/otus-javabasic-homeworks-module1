@@ -9,9 +9,6 @@ public class Plate {
     public int getFoodQuantity(){
         return foodQuantity;
     }
-    public void setFoodQuantity(Cat cat){
-        this.foodQuantity -= cat.getAppetite();
-    }
     public Plate(int maxCapacity, int foodQuantity){
         this.maxCapacity = maxCapacity;
         this.foodQuantity = foodQuantity;
@@ -28,10 +25,10 @@ public class Plate {
         System.out.println("Наполнили тарелку едой");
     }
     public boolean decreaseFood(Cat cat){
-        if (foodQuantity - cat.getAppetite() >= 0){
-            return true;
+        if (foodQuantity - cat.getAppetite() < 0){
+            return false;
         }
-        return false;
+        foodQuantity -= cat.getAppetite();
+        return true;
     }
-
 }
