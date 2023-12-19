@@ -59,13 +59,11 @@ public class ManyDimentionalArrays {
     }
 
     public static int verticalSum(int[][] array2D) {
+        int sum = 0;
         for (int i = 0; i < array2D.length; i++) {
             if (array2D[i].length < 2) {
                 return -1;
             }
-        }
-        int sum = 0;
-        for (int i = 0; i < array2D.length; i++) {
             sum += array2D[i][1];
         }
         return sum;
