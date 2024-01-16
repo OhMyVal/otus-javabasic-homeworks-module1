@@ -1,6 +1,6 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
-public class Horse implements Transport{
+public class Horse implements Movable {
     private int power;
     private Human driver;
     private final int drainRate = 15;
@@ -17,10 +17,6 @@ public class Horse implements Transport{
     }
     public int getDrainRate(){
         return drainRate;
-    }
-    @Override
-    public int getFuel() {
-        return 0;
     }
     public Horse(int power){
         this.power = power;

@@ -1,6 +1,6 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
-public class Bicycle implements Transport {
+public class Bicycle implements Movable {
     private Human driver;
 
     @Override
@@ -11,10 +11,6 @@ public class Bicycle implements Transport {
     @Override
     public void setDriver(Human driver) {
         this.driver = driver;
-    }
-    @Override
-    public int getFuel() {
-        return 0;
     }
     @Override
     public String toString(){

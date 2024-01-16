@@ -1,10 +1,11 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
-public class Human {
+public class Human implements Movable {
     private String name;
     private int energy;
-    private Transport currentTransport;
+    private Movable currentTransport;
     private final int drainRate = 30;
+    private Human driver;
     public String getName(){
         return name;
     }
@@ -14,17 +15,25 @@ public class Human {
     public void setEnergy(int energy){
         this.energy = energy;
     }
-    public Transport getCurrentTransport(){
+    public Movable getCurrentTransport(){
         return currentTransport;
     }
     public int getDrainRate(){
         return drainRate;
     }
+    @Override
+    public Human getDriver(){
+        return driver;
+    }
+    @Override
+    public void setDriver(Human driver){
+        this.driver = driver;
+    }
     public Human(String name, int energy){
         this.name = name;
         this.energy = energy;
            }
-    public boolean getInTransport(Transport transport){
+    public boolean getInTransport(Movable transport){
         if (transport.getDriver() != null && transport.getDriver() != this){
             System.out.println("Человек " + name + " не может сесть в " + transport + " - там сидит кто-то другой");
             return false;
@@ -46,17 +55,18 @@ public class Human {
         System.out.println("Человек " + name + " сел в " + transport);
         return true;
     }
-    public boolean leaveTransport(Transport transport){
-        if (currentTransport != null && currentTransport == transport){ //if(transport.getDriver() = this){ думаю, что 2 условия можно заменить одним этим
-            currentTransport = null;
-            transport.setDriver(null); //не уверена, что нужна эта строчка: currentTransport и transport ссылаются на один объект. и в предыдущей строке я обнулила водителя.
+    public boolean leaveTransport(Movable transport){
+        if (transport.getDriver() == this){
+            currentTransport = null;  // тут обнуляется именно ссылка на транспорт
+            transport.setDriver(null); // ссылка на водителя в самом транспорте в этой строчке обнуляется
             System.out.println("Человек " + name + " покинул " + transport);
             return true;
         }
         System.out.println("Невозможно выполнить действие"); // решила не расписывать сценарии, что человек и так без транспорта или сидит в другом транспорте.
         return false;
     }
-    public boolean walk(int distance){
+    @Override
+    public boolean move (CountryVariety countryVariety, int distance){
         if (currentTransport != null){
             System.out.println("Человек " + name + " не может идти пешком - он в транспорте");
             return false;

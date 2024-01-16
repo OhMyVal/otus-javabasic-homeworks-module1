@@ -38,19 +38,19 @@ public class MainApp {
                 new Human("Egor", 400)
         };
 
-        Transport[] transport = {
+        Movable[] transport = {
                 new Bicycle(),
                 new Car(50),
                 new Horse(350),
                 new TerrainVehicle(30)
         };
         for(Human h: human){
-            for(Transport t: transport){
+            for(Movable t: transport){
 //                h.getInTransport(t);
                 System.out.println(h.getCurrentTransport());
                 if ( (!(h.getInTransport(t))) || (!(t.move(CountryVariety.DEEP_FOREST,5))) ){
                     h.leaveTransport(t);
-                    h.walk(2);
+                    h.move(CountryVariety.DEEP_FOREST,2);
                 }
 //               h.leaveTransport(t); // если это тут убрать, то (например): при переборе Борис остается в вездеходе к концу цикла.
                 // Макс, когда доходит до вездехода, говорит, что не может в него сесть, т.к. там кто-то сидит.

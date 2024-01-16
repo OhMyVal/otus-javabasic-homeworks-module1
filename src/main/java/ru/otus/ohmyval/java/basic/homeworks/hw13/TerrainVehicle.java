@@ -1,12 +1,8 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw13;
 
-public class TerrainVehicle implements Transport {
+public class TerrainVehicle implements Movable {
     private int fuel;
     private Human driver;
-    @Override
-    public int getFuel() {
-        return fuel;
-    }
     @Override
     public Human getDriver(){
         return driver;
