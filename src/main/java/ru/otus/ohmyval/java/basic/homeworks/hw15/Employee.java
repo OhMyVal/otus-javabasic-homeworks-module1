@@ -29,5 +29,17 @@ public class Employee {
         }
         return ageSelectionList;
     }
+    public static boolean middleAgeSelection(ArrayList<Employee> list, int minMiddleAge){
+        int sumAge = 0;
+        for (int i = 0; i < list.size(); i++) {
+            sumAge += list.get(i).age;
+            }
+            int middleAge = sumAge/list.size();
+            if (middleAge > minMiddleAge){
+                return true;
+            }
+        return false;
+    }
 
 }
+
