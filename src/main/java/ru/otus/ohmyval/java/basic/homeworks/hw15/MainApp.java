@@ -18,13 +18,17 @@ public class MainApp {
                 new Employee("Boris", 32),
                 new Employee("Egor", 23),
                 new Employee("Ivan", 54),
-                new Employee("Denis", 45),
+                new Employee("Denis", 23),
                 new Employee("Alex", 38)));
 
         System.out.println(employeeList);
         System.out.println(printName(employeeList));
         System.out.println(ageSelection(employeeList, 35));
         System.out.println(middleAgeSelection(employeeList, 37));
+        System.out.println(minAgeSearch(employeeList));
+        System.out.println();
+//        System.out.println(newMinAgeSearch(employeeList));
+        newMinAgeSearch(employeeList);
 
 
     }
