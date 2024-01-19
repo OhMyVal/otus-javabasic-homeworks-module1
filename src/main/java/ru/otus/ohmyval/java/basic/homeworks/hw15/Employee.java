@@ -20,5 +20,14 @@ public class Employee {
         }
         return nameList;
     }
+    public static ArrayList ageSelection(ArrayList<Employee> list, int minAge){
+        ArrayList<Employee> ageSelectionList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).age >= minAge){
+                ageSelectionList.add(list.get(i));
+            }
+        }
+        return ageSelectionList;
+    }
 
 }

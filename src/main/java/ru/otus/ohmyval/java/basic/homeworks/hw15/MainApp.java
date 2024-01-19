@@ -3,6 +3,7 @@ package ru.otus.ohmyval.java.basic.homeworks.hw15;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static ru.otus.ohmyval.java.basic.homeworks.hw15.Employee.ageSelection;
 import static ru.otus.ohmyval.java.basic.homeworks.hw15.Employee.printName;
 
 public class MainApp {
@@ -20,9 +21,10 @@ public class MainApp {
                 new Employee("Ivan", 54),
                 new Employee("Denis", 45),
                 new Employee("Alex", 38)));
-        
+
         System.out.println(employeeList);
         System.out.println(printName(employeeList));
+        System.out.println(ageSelection(employeeList, 35));
 
 
     }
