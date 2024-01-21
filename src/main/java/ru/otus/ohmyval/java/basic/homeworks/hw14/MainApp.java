@@ -28,7 +28,8 @@ public class MainApp {
                     int intVal = Integer.parseInt(arr[i][j]);
                     sum += intVal;
                 } catch (NumberFormatException ex) {
-                    throw new AppArrayDataException("Ячейку " + arr[i][j] + " невозможно преобразовать в число"); // не знаю, как распечатать индекс массива (и нужно ли это?)
+                    throw new AppArrayDataException(
+                            "Ячейку " + arr[i][j] + " (строка " + (i+1) + ", столбец " + (j+1) + ") невозможно преобразовать в число");
                 }
             }
         }
