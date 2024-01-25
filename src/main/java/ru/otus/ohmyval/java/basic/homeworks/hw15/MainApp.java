@@ -2,6 +2,7 @@ package ru.otus.ohmyval.java.basic.homeworks.hw15;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static ru.otus.ohmyval.java.basic.homeworks.hw15.Employee.*;
 
@@ -14,7 +15,7 @@ public class MainApp {
 
 //  Вторая часть ДЗ
 
-        ArrayList<Employee> employeeList = new ArrayList<>(Arrays.asList(
+         List<Employee> employeeList = new ArrayList<>(Arrays.asList(
                 new Employee("Boris", 32),
                 new Employee("Egor", 23),
                 new Employee("Ivan", 54),
@@ -33,15 +34,15 @@ public class MainApp {
 
     }
 
-    public static ArrayList serialList(int min, int max) {
-        ArrayList<Integer> serialNumberList = new ArrayList<>();
+    public static List serialList(int min, int max) {
+        List<Integer> serialNumberList = new ArrayList<>();
         for (int i = 0; i <= max - min; i++) {
             serialNumberList.add(min+i);
         }
         return serialNumberList;
     }
 
-    public static int sumAndPrint(ArrayList<Integer> list) {
+    public static int sumAndPrint(List<Integer> list) {
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) > 5) {
@@ -51,7 +52,7 @@ public class MainApp {
         return sum;
     }
 
-    public static void fillList(int a, ArrayList<Integer> list) {
+    public static void fillList(int a, List<Integer> list) {
         System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             list.set(i, a);
@@ -60,7 +61,7 @@ public class MainApp {
         System.out.println();
     }
 
-    public static void increaseList(int a, ArrayList<Integer> list) {
+    public static void increaseList(int a, List<Integer> list) {
         System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             list.set(i, list.get(i) + a);

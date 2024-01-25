@@ -1,6 +1,7 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw15;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Employee {
     private String name;
@@ -13,15 +14,15 @@ public class Employee {
     public String toString(){
        return "Employee " + name + ", " + age;
     }
-    public static ArrayList printName(ArrayList<Employee> list){
-        ArrayList<String> nameList = new ArrayList<>(list.size());
+    public static List printName(List<Employee> list){
+        List<String> nameList = new ArrayList<>(list.size());
         for (int i = 0; i < list.size(); i++) {
             nameList.add(i, list.get(i).name);
         }
         return nameList;
     }
-    public static ArrayList ageSelection(ArrayList<Employee> list, int minAge){
-        ArrayList<Employee> ageSelectionList = new ArrayList<>();
+    public static List ageSelection(List<Employee> list, int minAge){
+        List<Employee> ageSelectionList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).age >= minAge){
                 ageSelectionList.add(list.get(i));
@@ -29,7 +30,7 @@ public class Employee {
         }
         return ageSelectionList;
     }
-    public static boolean middleAgeSelection(ArrayList<Employee> list, int minMiddleAge){
+    public static boolean middleAgeSelection(List<Employee> list, int minMiddleAge){
         int sumAge = 0;
         for (int i = 0; i < list.size(); i++) {
             sumAge += list.get(i).age;
@@ -40,7 +41,7 @@ public class Employee {
             }
         return false;
     }
-    public static Employee minAgeSearch(ArrayList<Employee> list){
+    public static Employee minAgeSearch(List<Employee> list){
         int minAge = list.get(0).age;
         int index = 0;
         for (int i = 1; i < list.size(); i++) {
@@ -56,8 +57,8 @@ public class Employee {
     // Я не поняла, можно ли вернуть ссылки не по индексу, а по наличию у объектов поля, удовлетворяющего условию.
     // Поэтому я создала еще один похожий метод newMinAgeSearch. Он может быть void и печатать ссылки
     // на сотрудников, либо создает новый список и возвращает его с сотрудниками минимального возраста.
-    public static void newMinAgeSearch(ArrayList<Employee> list){ // вместо void - ArrayList
-//        ArrayList<Employee> minAgeSearchList = new ArrayList<>();
+    public static void newMinAgeSearch(List<Employee> list){ // вместо void - List
+//        List<Employee> minAgeSearchList = new ArrayList<>();
         int minAge = list.get(0).age;
         for (int i = 1; i < list.size(); i++) {
             if (list.get(i).age < minAge){
