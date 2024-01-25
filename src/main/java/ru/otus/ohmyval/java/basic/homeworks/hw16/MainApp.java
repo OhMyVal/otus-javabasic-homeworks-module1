@@ -21,6 +21,7 @@ public class MainApp {
         System.out.println(phoneBookMap.entrySet());
         System.out.println(phoneBookMap.values());
         System.out.println(phoneBook.containsPhoneNumber(phoneBookMap, "100-100"));
+        phoneBook.find(phoneBookMap, "Petrov Petr");
 
 //        phoneBook.containsPhoneNumber()
 

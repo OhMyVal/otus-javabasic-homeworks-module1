@@ -26,27 +26,27 @@ public class PhoneBook {
             System.out.println("Добавили к " + completeName + " еще один номер " + number);
             return;
             }
-        Set<String> newPhoneNumbers = new HashSet<>(); //
-        newPhoneNumbers.add(number);
-        hashMap.put(completeName, newPhoneNumbers);  //
-        phoneNumbers.add(number);
+        Set<String> newPhoneNumbers = new HashSet<>(); // Получается, что при записи каждой новой пары ключ-значение
+        newPhoneNumbers.add(number); // я каждый раз создаю новый hashSet. Вопрос: в newPhoneNumbers каждый раз записывается новый hashSet?
+        hashMap.put(completeName, newPhoneNumbers);  //Или старые данные переписываютя новыми? Судя по результам в консоли - создается новый.
+        phoneNumbers.add(number); //А hashSet phoneNumbers нужен только, чтобы отслеживать наличие там всех номеров.
         System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
     }
 
-    public void find(Map hashMap, String completeName){
-        System.out.println(hashMap.get(completeName));
+    public void find(Map <String, Set<String>> hashMap, String completeName){
+         System.out.println(hashMap.get(completeName));
     }
 
     public boolean containsPhoneNumber(Map <String, Set<String>> hashMap, String number){
-//        Set<String> newPhoneNumbers = new HashSet<>();
-//        newPhoneNumbers.add(number);
-//        for (Map.Entry<String, Set<String>> entry: hashMap.entrySet()){
-//           if (entry.getValue().equals(newPhoneNumbers)){
+//        Set<String> newPhoneNumbers = new HashSet<>();    // Этот весь закомментированный код ищет телефон через hashMap.
+//        newPhoneNumbers.add(number);            // Но получается, что находит только те, которые "единичные" (ключ-одно значение)
+//        for (Map.Entry<String, Set<String>> entry: hashMap.entrySet()){    //если у одного ключа несколько значений,
+//           if (entry.getValue().equals(newPhoneNumbers)){   // то он не выводит ни одного из них.
 //               return true;
 //           }
 //        }
 //        return false;
-        return phoneNumbers.contains(number);
+        return phoneNumbers.contains(number);  // А эта одна строчка находит ВСЕ, что есть. Но насколько это корректно?
     }
 
 
