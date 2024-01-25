@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static ru.otus.ohmyval.java.basic.homeworks.hw15.Employee.*;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class MainApp {
 
 //  Вторая часть ДЗ
 
-         List<Employee> employeeList = new ArrayList<>(Arrays.asList(
+        List<Employee> employeeList = new ArrayList<>(Arrays.asList(
                 new Employee("Boris", 32),
                 new Employee("Egor", 23),
                 new Employee("Ivan", 54),
@@ -23,21 +22,19 @@ public class MainApp {
                 new Employee("Alex", 38)));
 
         System.out.println(employeeList);
-        System.out.println(printName(employeeList));
-        System.out.println(ageSelection(employeeList, 35));
-        System.out.println(middleAgeSelection(employeeList, 37));
-        System.out.println(minAgeSearch(employeeList));
+        System.out.println(EmployeesUtils.printName(employeeList));
+        System.out.println(EmployeesUtils.ageSelection(employeeList, 35));
+        System.out.println(EmployeesUtils.middleAgeSelection(employeeList, 37));
+        System.out.println(EmployeesUtils.minAgeSearch(employeeList));
         System.out.println();
-//        System.out.println(newMinAgeSearch(employeeList));
-        newMinAgeSearch(employeeList);
-
-
+        System.out.println(EmployeesUtils.newMinAgeSearch(employeeList));
     }
+
 
     public static List serialList(int min, int max) {
         List<Integer> serialNumberList = new ArrayList<>();
         for (int i = 0; i <= max - min; i++) {
-            serialNumberList.add(min+i);
+            serialNumberList.add(min + i);
         }
         return serialNumberList;
     }
