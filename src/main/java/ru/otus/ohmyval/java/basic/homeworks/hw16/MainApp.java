@@ -11,17 +11,17 @@ public class MainApp {
         Map<String, Set<String>> phoneBookMap = new HashMap<>();
         PhoneBook phoneBook = new PhoneBook(phoneBookMap);
 
-        phoneBook.add(phoneBookMap,"Ivanov Ivan", "100-400");
-        phoneBook.add(phoneBookMap,"Ivanov Ivan", "100-500");
-        phoneBook.add(phoneBookMap,"Ivanov Ivan", "100-500");
-        phoneBook.add(phoneBookMap,"Petrov Petr", "100-600");
-        phoneBook.add(phoneBookMap,"Egorov Egor", "100-700");
-        phoneBook.add(phoneBookMap,"Ivanov Sergey", "100-800");
-        phoneBook.add(phoneBookMap,"Petrov Konstantin", "100-900");
+        phoneBook.add("Ivanov Ivan", "100-400");
+        phoneBook.add("Ivanov Ivan", "100-500");
+        phoneBook.add("Ivanov Ivan", "100-500");
+        phoneBook.add("Petrov Petr", "100-600");
+        phoneBook.add("Egorov Egor", "100-700");
+        phoneBook.add("Ivanov Sergey", "100-800");
+        phoneBook.add("Petrov Konstantin", "100-900");
         System.out.println(phoneBookMap.entrySet());
         System.out.println(phoneBookMap.values());
-        System.out.println(phoneBook.containsPhoneNumber(phoneBookMap, "100-100"));
-        phoneBook.find(phoneBookMap, "Petrov Petr");
+        System.out.println(phoneBook.containsPhoneNumber("100-600"));
+        phoneBook.find("Petrov Petr");
 
 //        phoneBook.containsPhoneNumber()
 
