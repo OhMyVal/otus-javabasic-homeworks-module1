@@ -6,32 +6,47 @@ import java.util.Map;
 import java.util.Set;
 
 public class PhoneBook {
-//    private String surName;
-//    private String number;
-//    public PhoneBook(String surName, String number){
-//        this.surName = surName;
-//        this.number = number;
-//    }
-//    public String getSurName(){
-//        return surName;
-//    }
-//    public String getNumber(){
-//        return number;
-//    }
+        private Map hashMap = new HashMap();
+    public Map getHashMap(){
+        return hashMap;
+    }
+    public PhoneBook(Map hashMap){
+        this.hashMap = hashMap;
+    }
+    Set<String> phoneNumbers = new HashSet<>();
 
-    public static void add(Map<String, String> hashMap, String surName, String number){
-        hashMap.put(surName, number);
+    public void add(Map <String, Set<String>> hashMap, String completeName, String number){
+        if (phoneNumbers.contains(number)) {
+            System.out.println("Номер " + number + " уже есть в телефонном справочнике");
+            return;
+            }
+        if (hashMap.containsKey(completeName)){
+            hashMap.get(completeName).add(number);
+            phoneNumbers.add(number);
+            System.out.println("Добавили к " + completeName + " еще один номер " + number);
+            return;
+            }
+        Set<String> newPhoneNumbers = new HashSet<>(); //
+        newPhoneNumbers.add(number);
+        hashMap.put(completeName, newPhoneNumbers);  //
+        phoneNumbers.add(number);
+        System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
     }
 
-    public static void find(Map<String, String> hashMap, String surName){
-        System.out.println(hashMap.get(surName));
+    public void find(Map hashMap, String completeName){
+        System.out.println(hashMap.get(completeName));
     }
 
-    public static boolean containsPhoneNumber(Map<String, String> hashMap, String number){
-        if (hashMap.containsValue(number)){
-        return true;
-        }
-        return false;
+    public boolean containsPhoneNumber(Map <String, Set<String>> hashMap, String number){
+//        Set<String> newPhoneNumbers = new HashSet<>();
+//        newPhoneNumbers.add(number);
+//        for (Map.Entry<String, Set<String>> entry: hashMap.entrySet()){
+//           if (entry.getValue().equals(newPhoneNumbers)){
+//               return true;
+//           }
+//        }
+//        return false;
+        return phoneNumbers.contains(number);
     }
 
 
