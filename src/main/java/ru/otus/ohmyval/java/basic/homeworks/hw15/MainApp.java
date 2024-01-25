@@ -22,7 +22,7 @@ public class MainApp {
                 new Employee("Alex", 38)));
 
         System.out.println(employeeList);
-        System.out.println(EmployeesUtils.printName(employeeList));
+        System.out.println(EmployeesUtils.getEmployeeName(employeeList));
         System.out.println(EmployeesUtils.ageSelection(employeeList, 35));
         System.out.println(EmployeesUtils.middleAgeSelection(employeeList, 37));
         System.out.println(EmployeesUtils.minAgeSearch(employeeList));
@@ -31,7 +31,7 @@ public class MainApp {
     }
 
 
-    public static List serialList(int min, int max) {
+    public static List<Integer> serialList(int min, int max) {
         List<Integer> serialNumberList = new ArrayList<>();
         for (int i = 0; i <= max - min; i++) {
             serialNumberList.add(min + i);

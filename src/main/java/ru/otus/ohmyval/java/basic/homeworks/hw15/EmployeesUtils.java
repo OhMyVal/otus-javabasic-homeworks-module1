@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EmployeesUtils {
 
-    public static List printName(List<Employee> list) {
+    public static List<String> getEmployeeName(List<Employee> list) {
         List<String> nameList = new ArrayList<>(list.size());
         for (int i = 0; i < list.size(); i++) {
             nameList.add(i, list.get(i).name);
@@ -13,7 +13,7 @@ public class EmployeesUtils {
         return nameList;
     }
 
-    public static List ageSelection(List<Employee> list, int minAge) {
+    public static List<Employee> ageSelection(List<Employee> list, int minAge) {
         List<Employee> ageSelectionList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).age >= minAge) {
@@ -47,7 +47,7 @@ public class EmployeesUtils {
         return list.get(index);
     }
 
-    public static List newMinAgeSearch(List<Employee> list) { // метод создает новый список и возвращает его со всеми сотрудниками минимального возраста
+    public static List<Employee> newMinAgeSearch(List<Employee> list) { // метод создает новый список и возвращает его со всеми сотрудниками минимального возраста
         List<Employee> minAgeSearchList = new ArrayList<>();
         int minAge = list.get(0).age;
         for (int i = 1; i < list.size(); i++) {
