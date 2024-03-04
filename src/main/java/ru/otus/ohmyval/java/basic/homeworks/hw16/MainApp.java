@@ -23,7 +23,5 @@ public class MainApp {
         System.out.println(phoneBookMap.size());
         System.out.println(phoneBook.containsPhoneNumber("100-400"));
         phoneBook.find("Ivanov Ivan");
-
-
     }
 }

@@ -1,5 +1,7 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw16;
 
+import jdk.jfr.SettingControl;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
@@ -26,13 +28,15 @@ public class PhoneBook {
             System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
             return;
         }
-        for (Map.Entry<String, Set<String>> entry : hashMap.entrySet()) {
-            if (entry.getKey().equals(completeName)) {
-                entry.setValue(Collections.singleton(number)); // эта строчка не добавляет еще одно значение, а переписывает его
-            }
+        Set<String> phoneNumbers = new HashSet<>();
+        phoneNumbers.addAll(hashMap.get(completeName));
+        if (phoneNumbers.contains(number)) {
+            System.out.println("Номер " + number + " уже есть в телефонном справочнике");
+            return;
         }
+        phoneNumbers.add(number);
+        hashMap.put(completeName, phoneNumbers);
         System.out.println("Добавили к " + completeName + " еще один номер " + number);
-//            hashMap.get(completeName).add(number);
     }
 
     public void find(String completeName) {
@@ -40,7 +44,11 @@ public class PhoneBook {
     }
 
     public boolean containsPhoneNumber(String number) {
-        return hashMap.containsValue(Collections.singleton(number));
+        for (Set<String> value : hashMap.values()) {
+            if (value.contains(number)) {
+                return true;
+            }
+        }
+        return false;
     }
-
 }
