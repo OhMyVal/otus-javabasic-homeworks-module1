@@ -1,6 +1,6 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw16;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -16,24 +16,23 @@ public class PhoneBook {
         this.hashMap = hashMap;
     }
 
-    Set<String> phoneNumbers = new HashSet<>();
-
     public void add(String completeName, String number) {
-        if (phoneNumbers.contains(number)) {
+        if (hashMap.containsValue(Collections.singleton(number))) {
             System.out.println("Номер " + number + " уже есть в телефонном справочнике");
             return;
         }
-        if (hashMap.containsKey(completeName)) {
-            hashMap.get(completeName).add(number);
-            phoneNumbers.add(number);
-            System.out.println("Добавили к " + completeName + " еще один номер " + number);
+        if (!hashMap.containsKey(completeName)) {
+            hashMap.put(completeName, Collections.singleton(number));
+            System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
             return;
         }
-        Set<String> newPhoneNumbers = new HashSet<>(); // Получается, что при записи каждой новой пары ключ-значение
-        newPhoneNumbers.add(number); // я каждый раз создаю новый hashSet. Вопрос: в newPhoneNumbers каждый раз записывается новый hashSet?
-        hashMap.put(completeName, newPhoneNumbers);  //Или старые данные переписываютя новыми? Судя по результам в консоли - создается новый.
-        phoneNumbers.add(number); //А hashSet phoneNumbers нужен только, чтобы отслеживать наличие там всех номеров.
-        System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
+        for (Map.Entry<String, Set<String>> entry : hashMap.entrySet()) {
+            if (entry.getKey().equals(completeName)) {
+                entry.setValue(Collections.singleton(number)); // эта строчка не добавляет еще одно значение, а переписывает его
+            }
+        }
+        System.out.println("Добавили к " + completeName + " еще один номер " + number);
+//            hashMap.get(completeName).add(number);
     }
 
     public void find(String completeName) {
@@ -41,15 +40,7 @@ public class PhoneBook {
     }
 
     public boolean containsPhoneNumber(String number) {
-//        Set<String> newPhoneNumbers = new HashSet<>();    // Этот весь закомментированный код ищет телефон через hashMap.
-//        newPhoneNumbers.add(number);            // Но получается, что находит только те, которые "единичные" (ключ-одно значение)
-//        for (Map.Entry<String, Set<String>> entry: hashMap.entrySet()){    //если у одного ключа несколько значений,
-//           if (entry.getValue().equals(newPhoneNumbers)){   // то он не выводит ни одного из них.
-//               return true;
-//           }
-//        }
-//        return false;
-        return phoneNumbers.contains(number);  // А эта одна строчка находит ВСЕ, что есть. Но насколько это корректно?
+        return hashMap.containsValue(Collections.singleton(number));
     }
 
 }

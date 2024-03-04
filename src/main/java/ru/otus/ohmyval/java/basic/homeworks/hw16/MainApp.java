@@ -20,42 +20,9 @@ public class MainApp {
         phoneBook.add("Petrov Konstantin", "100-900");
         System.out.println(phoneBookMap.entrySet());
         System.out.println(phoneBookMap.values());
-        System.out.println(phoneBook.containsPhoneNumber("100-600"));
-        phoneBook.find("Petrov Petr");
-
-//        phoneBook.containsPhoneNumber()
-
-//       Map<String, Set<String>> phoneBookMap2 = new HashMap<>();
-//       Set<String> phoneNumbers = new HashSet<>();
-//        phoneNumbers.add("34563");
-//        phoneNumbers.add("23895");
-////        phoneNumbers.add("98645");
-//        phoneNumbers.add("28643");
-//        phoneNumbers.add("65119");
-//        phoneNumbers.add("55744");
-//        phoneNumbers.add("98846");
-//        phoneNumbers.add("30913");
-//        phoneBookMap.put("Ivanov", phoneNumbers);
-//        phoneNumbers = new HashSet<>();
-//        phoneNumbers.add("98846");
-//        phoneBookMap.put("Petrov", phoneNumbers);
-//        System.out.println(phoneBookMap.entrySet());
-//        phoneNumbers = new HashSet<>();
-//        phoneNumbers.add("28643");
-//        phoneBookMap.get("Ivanov").add("28643");
-//        System.out.println(phoneBookMap.entrySet());
-//        System.out.println(phoneNumbers);
-//        Map<String, String> phoneBookMap = new HashMap<>();
-//        phoneBookMap.put("Ivanov", "36984");
-//        phoneBookMap.put("Petrov", "88762");
-//        phoneBookMap.put("Sidorov", "65498");
-//        phoneBookMap.put("Egorov", "25987");
-//
-//        System.out.println(phoneBookMap.entrySet());
-//        PhoneBook.add(phoneBookMap, "Alekseev", "90217");
-//        System.out.println(phoneBookMap.entrySet());
-//        PhoneBook.find(phoneBookMap,"Sidorov");
-//        System.out.println(PhoneBook.containsPhoneNumber(phoneBookMap,"77984"));
+        System.out.println(phoneBookMap.size());
+        System.out.println(phoneBook.containsPhoneNumber("100-400"));
+        phoneBook.find("Ivanov Ivan");
 
 
     }
