@@ -12,6 +12,7 @@ public class Person {
         this.name = name;
         this.patronymic = patronymic;
     }
+
     public String getSurname() {
         return surname;
     }
@@ -35,5 +36,10 @@ public class Person {
     @Override
     public int hashCode() {
         return Objects.hash(surname, name, patronymic);
+    }
+
+    @Override
+    public String toString() {
+        return surname + " " + name + " " + patronymic;
     }
 }

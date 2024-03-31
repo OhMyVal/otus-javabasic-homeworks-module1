@@ -6,33 +6,35 @@ import java.util.Map;
 import java.util.Set;
 
 public class PhoneBook {
-    private Map<String, Set<String>> hashMap;
-    public PhoneBook(Map<String, Set<String>> hashMap) {
+    private Map<Person, Set<String>> hashMap;
+
+    public PhoneBook(Map<Person, Set<String>> hashMap) {
         this.hashMap = hashMap;
     }
-    public Map<String, Set<String>> getHashMap() {
+
+    public Map<Person, Set<String>> getHashMap() {
         return hashMap;
     }
 
-    public void add(String completeName, String number) {
-        if(containsPhoneNumber(number)){
+    public void add(Person person, String number) {
+        if (containsPhoneNumber(number)) {
             System.out.println("Номер " + number + " уже есть в телефонном справочнике");
             return;
         }
-        if (!hashMap.containsKey(completeName)) {
-            hashMap.put(completeName, Collections.singleton(number));
-            System.out.println("Записали  " + completeName + " - " + number + " в телефонный справочник");
+        if (!hashMap.containsKey(person)) {
+            hashMap.put(person, Collections.singleton(number));
+            System.out.println("Записали  " + person + " - " + number + " в телефонный справочник");
             return;
         }
         Set<String> phoneNumbers = new HashSet<>();
-        phoneNumbers.addAll(hashMap.get(completeName));
+        phoneNumbers.addAll(hashMap.get(person));
         phoneNumbers.add(number);
-        hashMap.put(completeName, phoneNumbers);
-        System.out.println("Добавили к " + completeName + " еще один номер " + number);
+        hashMap.put(person, phoneNumbers);
+        System.out.println("Добавили к " + person + " еще один номер " + number);
     }
 
-    public void find(String completeName) {
-        System.out.println(hashMap.get(completeName));
+    public void find(Person person) {
+        System.out.println(hashMap.get(person));
     }
 
     public boolean containsPhoneNumber(String number) {
