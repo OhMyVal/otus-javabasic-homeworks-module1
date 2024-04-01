@@ -12,8 +12,9 @@ public class Bicycle implements Movable {
     public void setDriver(Human driver) {
         this.driver = driver;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return getClass().getSimpleName();
     }
 
