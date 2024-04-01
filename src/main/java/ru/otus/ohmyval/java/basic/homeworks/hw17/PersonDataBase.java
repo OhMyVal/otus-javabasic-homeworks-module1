@@ -12,4 +12,16 @@ public class PersonDataBase {
     public List<Person> getList() {
         return list;
     }
+    public Person findById(Long id){
+        return person;
+    }
+    public void add(Person person){
+
+    }
+    public boolean isManager(Person person){
+        return false;
+    }
+    public boolean isEmployee(Long id){
+        return false;
+    }
 }
