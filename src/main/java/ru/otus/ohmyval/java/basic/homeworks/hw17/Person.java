@@ -37,4 +37,9 @@ public class Person {
     public int hashCode() {
         return Objects.hash(name, position, id);
     }
+
+    @Override
+    public String toString() {
+        return "Person: " + name + " - " + position + " - " + id + "; ";
+    }
 }
