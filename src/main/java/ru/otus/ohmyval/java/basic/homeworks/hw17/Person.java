@@ -30,12 +30,12 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(name, person.name) && position == person.position && Objects.equals(id, person.id);
+        return Objects.equals(name, person.name) && Objects.equals(id, person.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position, id);
+        return Objects.hash(name, id);
     }
 
     @Override

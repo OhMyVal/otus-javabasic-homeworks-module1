@@ -18,18 +18,16 @@ public class PersonDataBase {
         return list.toString();
     }
 
-//    Map<List<Person>,List<Person>> map = new HashMap<>;
-//    Map<Person,Person> map = new HashMap<>;
-
     Set<Position> managers = Set.of(Position.MANAGER, Position.DIRECTOR,
             Position.BRANCH_DIRECTOR, Position.SENIOR_MANAGER);
 
-    public String findById(Long id) {
-        Map<Long, String> map = new HashMap<>();
+    public Person findById(Long id) {
         for (int i = 0; i < list.size(); i++) {
-            map.put(list.get(i).id, list.get(i).name);
+            if (list.get(i).id.equals(id)) {
+                return list.get(i);
+            }
         }
-        return map.get(id);
+        return null;
     }
 
     public void add(Person person) {
@@ -44,12 +42,10 @@ public class PersonDataBase {
     }
 
     public boolean isEmployee(Long id) {
-        Map<Long, Position> map = new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
-            map.put(list.get(i).id, list.get(i).position);
-        }
-        if (!managers.contains(map.get(id))) {
-            return true;
+            if (list.get(i).id.equals(id) && !managers.contains(list.get(i).position)) {
+                return true;
+            }
         }
         return false;
     }
