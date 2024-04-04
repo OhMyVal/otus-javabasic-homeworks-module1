@@ -20,14 +20,13 @@ public class PersonDataBase {
 
     Set<Position> managers = Set.of(Position.MANAGER, Position.DIRECTOR,
             Position.BRANCH_DIRECTOR, Position.SENIOR_MANAGER);
+    Map<Long, Person> personMap = new HashMap<>();
 
     public Person findById(Long id) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).id.equals(id)) {
-                return list.get(i);
-            }
+            personMap.put(list.get(i).id, list.get(i));
         }
-        return null;
+        return personMap.get(id);
     }
 
     public void add(Person person) {
