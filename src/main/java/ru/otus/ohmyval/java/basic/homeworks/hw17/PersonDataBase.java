@@ -22,10 +22,14 @@ public class PersonDataBase {
             Position.BRANCH_DIRECTOR, Position.SENIOR_MANAGER);
     Map<Long, Person> personMap = new HashMap<>();
 
-    public Person findById(Long id) {
+    public void fillPersonMap() {
         for (int i = 0; i < list.size(); i++) {
             personMap.put(list.get(i).id, list.get(i));
         }
+    }
+
+    public Person findById(Long id) {
+        fillPersonMap();
         return personMap.get(id);
     }
 
@@ -41,11 +45,12 @@ public class PersonDataBase {
     }
 
     public boolean isEmployee(Long id) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).id.equals(id) && !managers.contains(list.get(i).position)) {
+        fillPersonMap();
+        if (!managers.contains(personMap.get(id).position)){
                 return true;
             }
-        }
         return false;
+        }
+
     }
-}
+
