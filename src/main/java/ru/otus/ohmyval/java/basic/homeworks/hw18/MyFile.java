@@ -26,7 +26,7 @@ public class MyFile extends File {
                 String enteredInfo = scanner1.nextLine();
                 writingFile(enteredInfo, arr[i]);
                 System.out.println("Информация успешно записана в файл");
-                break;
+                return;
             }
         }
         System.out.println("Некорректное название файла");
