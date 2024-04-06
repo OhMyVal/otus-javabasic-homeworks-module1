@@ -2,16 +2,19 @@ package ru.otus.ohmyval.java.basic.homeworks.hw18;
 
 import java.io.*;
 
+import static ru.otus.ohmyval.java.basic.homeworks.hw18.MyFile.workWithFiles;
+
 public class FilesApp {
 
     public static void main(String[] args) {
 
-        MyFile myFiles = new MyFile("target/my-files");
+        File myFiles = new File("D:\\Information Technology\\Java\\Otus обучение\\Java Basic\\Проекты в Идее\\homeworks");
+
         File[] filesArr = {
-                new MyFile("target/my-files/Thunder.txt"),
-                new MyFile("target/my-files/Eagles.txt"),
-                new MyFile("target/my-files/Sinatra.txt")
+                new File("Eagles.txt"),
+                new File("Sinatra.txt"),
+                new File("Thunder.txt")
         };
-        myFiles.workWithFiles(myFiles, filesArr);
+        workWithFiles(myFiles, filesArr);
     }
 }

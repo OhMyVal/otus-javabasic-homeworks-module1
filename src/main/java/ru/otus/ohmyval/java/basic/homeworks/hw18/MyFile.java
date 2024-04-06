@@ -2,41 +2,60 @@ package ru.otus.ohmyval.java.basic.homeworks.hw18;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class MyFile extends File {
+public class MyFile {
 
-    public MyFile(String pathname) {
-        super(pathname);
-    }
-
-    public void workWithFiles(File file, File[] arr) {
-        System.out.println(Arrays.toString(file.list()));
-        System.out.println("Введите имя файла для работы. Имя не должно содержать .txt");
+    public static void workWithFiles(File file, File[] arr) {
+        printFileName(file);
+        System.out.println("Введите имя файла для работы.");
         Scanner scanner = new Scanner(System.in);
         String enteredFileName = scanner.next();
         for (int i = 0; i < arr.length; i++) {
             String firstWordName = splitFileName(arr[i]);
-            if (firstWordName.equalsIgnoreCase(enteredFileName)) {
-                readingFile(arr[i]);
-                System.out.println();
-                System.out.println("Введите информацию для записи в файл");
-                Scanner scanner1 = new Scanner(System.in);
-                String enteredInfo = scanner1.nextLine();
-                writingFile(enteredInfo, arr[i]);
-                System.out.println("Информация успешно записана в файл");
-                return;
-            }
+            if (validationCheck(arr, enteredFileName, i, firstWordName)) return;
         }
         System.out.println("Некорректное название файла");
+    }
+
+    private static boolean validationCheck(File[] arr, String enteredFileName, int i, String firstWordName) {
+        if (firstWordName.equalsIgnoreCase(enteredFileName)) {
+            readingFile(arr[i]);
+            System.out.println();
+            System.out.println("Введите информацию для записи в файл");
+            Scanner scanner1 = new Scanner(System.in);
+            String enteredInfo = scanner1.nextLine();
+            writingFile(enteredInfo, arr[i]);
+            System.out.println("Информация успешно записана в файл");
+            return true;
+        }
+        return false;
+    }
+
+    private static void printFileName(File file) {
+        try {
+            for (String s : file.list()
+            ) {
+                if (s.contains(".txt")) {
+                    String firstWordName = splitFileName(s);
+                    System.out.println(firstWordName);
+                }
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            System.out.println("Отсутствуют файлы в каталоге");
+        }
+    }
+
+    private static String splitFileName(String str) {
+        String[] splitName = str.split("\\.");
+        return splitName[0];
     }
 
     private static String splitFileName(File arr) {
         String myFileName = arr.getName();
         String[] splitName = myFileName.split("\\.");
-        String firstWordName = splitName[0];
-        return firstWordName;
+        return splitName[0];
     }
 
     private static void readingFile(File arr) {
