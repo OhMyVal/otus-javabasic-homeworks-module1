@@ -10,9 +10,6 @@ public class Apple extends Fruit {
     public static double getAppleWeight() {
         return appleWeight;
     }
-    public static void setAppleWeight(double appleWeight) {
-        Apple.appleWeight = appleWeight;
-    }
 
     public static String getName() {
         return name;
