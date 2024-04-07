@@ -1,14 +1,14 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw26;
 
 public class Apple extends Fruit {
-    static double appleWeight = 0.2;
+    static double weight = 0.2;
     static final String name = "Яблоко";
 
     public Apple() {
     }
 
-    public static double getAppleWeight() {
-        return appleWeight;
+    public static double getWeight() {
+        return weight;
     }
 
     public static String getName() {
@@ -22,7 +22,7 @@ public class Apple extends Fruit {
 
     @Override
     public double getFruitWeight() {
-        return appleWeight;
+        return weight;
     }
 
 

@@ -22,9 +22,9 @@ public class BoxApp {
         System.out.println(orangeBox);
         System.out.println(fruitBox);
 
-        System.out.println(appleBox.addFruits(new Apple()));
-        System.out.println(orangeBox.addFruits(new Orange()));
-        System.out.println(fruitBox.addFruits(new Apple()));
+        System.out.println(appleBox.addFruit(new Apple()));
+        System.out.println(orangeBox.addFruit(new Orange()));
+        System.out.println(fruitBox.addFruit(new Apple()));
 
         System.out.println(appleBox);
         System.out.println(orangeBox);
@@ -64,6 +64,5 @@ public class BoxApp {
         System.out.println(fruitBox1.transfer(fruitBox));
         System.out.println(fruitBox1);
         System.out.println(fruitBox);
-
     }
 }

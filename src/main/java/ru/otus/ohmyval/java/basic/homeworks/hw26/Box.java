@@ -5,8 +5,8 @@ import java.util.Objects;
 
 
 public class Box<T extends Fruit> {
-    static double emptyBoxWeight = 0.15;
-    List<T> list;
+    private static double emptyBoxWeight = 0.15;
+    private List<T> list;
 
     public Box(List<T> list) {
         this.list = list;
@@ -39,16 +39,16 @@ public class Box<T extends Fruit> {
 
     }
 
-    public boolean addFruits(T fruit) {
+    public boolean addFruit(T fruit) {
         return list.add(fruit);
     }
 
     public double weight() {
-        double boxWeight = emptyBoxWeight;
+        double weight = emptyBoxWeight;
         for (int i = 0; i < list.size(); i++) {
-            boxWeight += list.get(i).getFruitWeight();
+            weight += list.get(i).getFruitWeight();
         }
-        return boxWeight;
+        return weight;
     }
 
     public boolean compare(Box box) {
@@ -56,6 +56,9 @@ public class Box<T extends Fruit> {
     }
 
     public boolean transfer(Box<T> box) {
+        if (list == null || box.list == null) {
+            return false;
+        }
         if (this.equals(box)) {
             return false;
         }
@@ -63,7 +66,7 @@ public class Box<T extends Fruit> {
             return false;
         }
         for (int i = list.size() - 1; i >= 0; i--) {
-            box.addFruits(list.get(i));
+            box.addFruit(list.get(i));
             list.remove(i);
         }
         return true;
