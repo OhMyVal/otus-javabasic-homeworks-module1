@@ -10,6 +10,11 @@ public class ExampleClient implements AutoCloseable {
         this.inputStream = new DataInputStream(inputStream); // 3. создали потоки ввода/вывода
         this.outputStream = new DataOutputStream(outputStream);
     }
+    public String readOperation() throws IOException {
+        return inputStream.readUTF();
+
+
+    }
 
     public void send(String message) throws IOException { // метод будет принимать строчку
         outputStream.writeUTF(message); // отправляет строку на сервер, ждем ответа
