@@ -1,8 +1,7 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw21;
 
-
 public class ThreadsApplication {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         double[] myArray = new double[100_000_000];
         Thread t1 = new Thread(new Runnable() {
             @Override
@@ -46,10 +45,14 @@ public class ThreadsApplication {
         t2.start();
         t3.start();
         t4.start();
-        t1.join();
-        t2.join();
-        t3.join();
-        t4.join();
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         long endTime2 = System.currentTimeMillis();
         long spentTime2 = (endTime2 - startTime2);
         System.out.println(spentTime2);
