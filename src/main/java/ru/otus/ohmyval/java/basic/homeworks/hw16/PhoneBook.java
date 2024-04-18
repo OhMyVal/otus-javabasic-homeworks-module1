@@ -1,15 +1,11 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw16;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class PhoneBook {
-    private Map<Person, Set<String>> hashMap;
+    private Map<Person, Set<String>> hashMap = new HashMap<>();
 
-    public PhoneBook(Map<Person, Set<String>> hashMap) {
-        this.hashMap = hashMap;
+    public PhoneBook() {
     }
 
     public Map<Person, Set<String>> getHashMap() {
@@ -17,21 +13,38 @@ public class PhoneBook {
     }
 
     public void add(Person person, String number) {
-        if (containsPhoneNumber(number)) {
+        if (!containsPhoneNumber(number)) {
+            Set<String> phones;
+            if (hashMap.containsKey(person)) {
+                phones = hashMap.get(person);
+                System.out.println("Добавили к " + person + " еще один номер " + number);
+            } else {
+                phones = new HashSet<>();
+                System.out.println("Записали  " + person + " - " + number + " в телефонный справочник");
+            }
+            phones.add(number);
+            hashMap.put(person, phones);
+        } else {
             System.out.println("Номер " + number + " уже есть в телефонном справочнике");
-            return;
         }
-        if (!hashMap.containsKey(person)) {
-            hashMap.put(person, Collections.singleton(number));
-            System.out.println("Записали  " + person + " - " + number + " в телефонный справочник");
-            return;
-        }
-        Set<String> phoneNumbers = new HashSet<>();
-        phoneNumbers.addAll(hashMap.get(person));
-        phoneNumbers.add(number);
-        hashMap.put(person, phoneNumbers);
-        System.out.println("Добавили к " + person + " еще один номер " + number);
     }
+//    public void add(Person person, String number) {  // предыдущая версия метода (моя)
+//        if (containsPhoneNumber(number)) {
+//            System.out.println("Номер " + number + " уже есть в телефонном справочнике");
+//            return;
+//        }
+//        if (!hashMap.containsKey(person)) {
+//            hashMap.put(person, Collections.singleton(number));
+//            System.out.println("Записали  " + person + " - " + number + " в телефонный справочник");
+//            return;
+//        }
+//        Set<String> phoneNumbers = new HashSet<>();
+//        phoneNumbers.addAll(hashMap.get(person));
+//        phoneNumbers.add(number);
+//        hashMap.put(person, phoneNumbers);
+//        System.out.println("Добавили к " + person + " еще один номер " + number);
+//    }
+
 
     public void find(Person person) {
         System.out.println(hashMap.get(person));

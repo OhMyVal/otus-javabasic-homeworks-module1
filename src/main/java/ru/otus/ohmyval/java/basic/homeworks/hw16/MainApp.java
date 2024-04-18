@@ -1,14 +1,9 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw16;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 public class MainApp {
     public static void main(String[] args) {
 
-        Map<Person, Set<String>> phoneBookMap = new HashMap<>();
-        PhoneBook phoneBook = new PhoneBook(phoneBookMap);
+        PhoneBook phoneBook = new PhoneBook();
 
         phoneBook.add(new Person("Ivanov", "Ivan", "Ivanovich"), "100-400");
         phoneBook.add(new Person("Ivanov", "Ivan", "Ivanovich"), "100-500");
@@ -20,9 +15,9 @@ public class MainApp {
         phoneBook.add(new Person("Egorov", "Konstantin", "Ivanovich"), "100-300");
         phoneBook.add(new Person("Petrov", "Alex", "Ivanovich"), "100-700");
 
-        System.out.println(phoneBookMap.entrySet());
-        System.out.println(phoneBookMap.values());
-        System.out.println(phoneBookMap.size());
+        System.out.println(phoneBook.getHashMap().entrySet());
+        System.out.println(phoneBook.getHashMap().values());
+        System.out.println(phoneBook.getHashMap().size());
 
         phoneBook.find(new Person("Ivanov", "Ivan", "Ivanovich"));
         System.out.println(phoneBook.containsPhoneNumber("100-400"));
