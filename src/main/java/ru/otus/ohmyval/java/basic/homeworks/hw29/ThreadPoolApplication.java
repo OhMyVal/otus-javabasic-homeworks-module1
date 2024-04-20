@@ -1,80 +1,38 @@
 package ru.otus.ohmyval.java.basic.homeworks.hw29;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class ThreadPoolApplication {
 
-    private final Object mon = new Object();
-    private String str = "C";
-
     public static void main(String[] args) {
-        ThreadPoolApplication threadPoolApplication = new ThreadPoolApplication();
-        new Thread(new Runnable() {
+        ThreadPoolTask threadPoolTask = new ThreadPoolTask();
+        ExecutorService serv = Executors.newFixedThreadPool(3);
+        serv.execute(new Runnable() {
             @Override
             public void run() {
-                threadPoolApplication.printA();
+                System.out.println("Start1");
+                threadPoolTask.printA();
+                System.out.println("End1");
             }
-        }).start();
-        new Thread(new Runnable() {
+        });
+        serv.execute(new Runnable() {
             @Override
             public void run() {
-                threadPoolApplication.printB();
+                System.out.println("Start2");
+                threadPoolTask.printB();
+                System.out.println("End2");
             }
-        }).start();
-        new Thread(new Runnable() {
+        });
+        serv.execute(new Runnable() {
             @Override
             public void run() {
-                threadPoolApplication.printC();
+                System.out.println("Start3");
+                threadPoolTask.printC();
+                System.out.println("End3");
             }
-        }).start();
-    }
-
-    public void printA() {
-        synchronized (mon) {
-            try {
-                for (int i = 0; i < 5; i++) {
-                    while (str.equals("A") || str.equals("B")) {
-                        mon.wait();
-                    }
-                    System.out.print("A");
-                    str = "A";
-                    mon.notifyAll();
-                }
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public void printB() {
-        synchronized (mon) {
-            try {
-                for (int i = 0; i < 5; i++) {
-                    while (str.equals("B") || str.equals("C")) {
-                        mon.wait();
-                    }
-                    System.out.print("B");
-                    str = "B";
-                    mon.notifyAll();
-                }
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public void printC() {
-        synchronized (mon) {
-            try {
-                for (int i = 0; i < 5; i++) {
-                    while (str.equals("C") || str.equals("A")) {
-                        mon.wait();
-                    }
-                    System.out.print("C");
-                    str = "C";
-                    mon.notifyAll();
-                }
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
+        });
+        serv.shutdown();
     }
 }
+
