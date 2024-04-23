@@ -14,18 +14,8 @@ public class ThreadPoolApplication {
                 threadPoolTask.printA();
             }
         });
-        serv.execute(new Runnable() {
-            @Override
-            public void run() {
-                threadPoolTask.printB();
-            }
-        });
-        serv.execute(new Runnable() {
-            @Override
-            public void run() {
-                threadPoolTask.printC();
-            }
-        });
+        serv.execute(() -> threadPoolTask.printB());
+        serv.execute(threadPoolTask::printC);
         serv.shutdown();
     }
 }
