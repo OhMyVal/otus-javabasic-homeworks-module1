@@ -5,8 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ServiceMethods {
-    public static void workWithFiles(File file, File[] arr) {
-        printFileName(file);
+    public static void workWithFiles(File[] arr) {
+        printFileName(arr);
         System.out.println("Введите имя файла для работы.");
         Scanner scanner = new Scanner(System.in);
         String enteredFileName = scanner.next();
@@ -30,18 +30,10 @@ public class ServiceMethods {
         return false;
     }
 
-    private static void printFileName(File file) {
-        try {
-            for (String s : file.list()
-            ) {
-                if (s.contains(".txt")) {
-                    String firstWordName = splitFileName(s);
-                    System.out.println(firstWordName);
-                }
-            }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            System.out.println("Отсутствуют файлы в каталоге");
+    private static void printFileName(File[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            String firstWordName = splitFileName(arr[i].getName());
+            System.out.println(firstWordName);
         }
     }
 
@@ -70,12 +62,12 @@ public class ServiceMethods {
         }
     }
 
-    private static void readingFile(String enteredInfo, File arr) {
+    private static void readingFile(String str, File arr) {
         try (FileInputStream fis = new FileInputStream(arr)) {
             byte[] buffer = fis.readAllBytes();
             String data = new String(buffer, StandardCharsets.UTF_8);
             int counter = 0;
-            for (int i = 0; (i = data.indexOf(enteredInfo, i)) != -1; i += enteredInfo.length()) {
+            for (int i = 0; (i = data.indexOf(str, i)) != -1; i += str.length()) {
                 counter++;
             }
             System.out.println(counter);
