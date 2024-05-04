@@ -31,8 +31,8 @@ public class ServiceMethods {
     }
 
     private static void printFileName(File[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            String firstWordName = splitFileName(arr[i].getName());
+        for (File file : arr) {
+            String firstWordName = splitFileName(file.getName());
             System.out.println(firstWordName);
         }
     }
@@ -49,14 +49,10 @@ public class ServiceMethods {
     }
 
     private static void readingFile(File arr) {
-        try (FileInputStream fis = new FileInputStream(arr);
-             BufferedInputStream bis = new BufferedInputStream(fis);
-             InputStreamReader in = new InputStreamReader(bis)) {
-            int n = in.read();
-            while (n != -1) {
-                System.out.print((char) n);
-                n = in.read();
-            }
+        try (FileInputStream fileInputStream = new FileInputStream(arr)) {
+            byte[] buffer = fileInputStream.readAllBytes();
+            String data = new String(buffer, StandardCharsets.UTF_8);
+            System.out.println(data);
         } catch (IOException e) {
             e.printStackTrace();
         }
