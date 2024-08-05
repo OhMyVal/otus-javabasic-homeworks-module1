@@ -18,16 +18,21 @@ public class ArrayAppTests {
 
     @Test
     public void partArrayTest() {
-        Assertions.assertAll(
-                () -> {
-                    Assertions.assertThrows(RuntimeException.class, () -> {
+        Assertions.assertArrayEquals(new int[]{2, 2}, partArray(new int[]{4, 2, 1, 2, 2}));
+        Assertions.assertThrows(RuntimeException.class, () -> {
                         partArray(new int[]{2, 2, 3, 2, 2});
-                    });
-                },
-                () -> {
-                    Assertions.assertArrayEquals(new int[]{2, 2}, partArray(new int[]{4, 2, 1, 2, 2}));
-                }
-        );
+        });
+
+//        Assertions.assertAll(
+//                () -> {
+//                    Assertions.assertThrows(RuntimeException.class, () -> {
+//                        partArray(new int[]{2, 2, 3, 2, 2});
+//                    });
+//                },
+//                () -> {
+//                    Assertions.assertArrayEquals(new int[]{2, 2}, partArray(new int[]{4, 2, 1, 2, 2}));
+//                }
+//        );
 
     }
     @MethodSource("initialArrays")
